@@ -1,0 +1,51 @@
+<div
+  [ngClass]="isUserLogged() ? 'clickable' : ''"
+  class="card row mb-2 my-2"
+  *ngIf="isBlockView; else listView"
+  (click)="isUserLogged() ? onBookClick() : ''">
+  <div class="image-container col-6">
+    <img class="cover" src="{{ book?.cover }}" />
+  </div>
+  <div class="book-info col-6">
+    <div class="book-header">
+      <h6>{{ book?.title }}</h6>
+    </div>
+    <div class="book-author">
+      <p >{{ authors }}</p>
+    </div>
+    <div class="book-genre">
+      {{ genres }}
+    </div>
+    <div class="book-description">
+      <span class="description">{{ book?.description }}...</span>
+    </div>
+  </div>
+</div>
+
+<ng-template #listView>
+  <div
+    [ngClass]="isUserLogged() ? 'clickable' : ''"
+    class="card row mb-2 my-2 mx-0"
+    (click)=" isUserLogged() ? onBookClick() : ''">
+    <div class="image-container col-2">
+      <img class="cover" src="{{ book?.cover }}" />
+    </div>
+    <div class="book-info col-10">
+      <div class="header-genre-field">
+        <div class="book-header book-header-list">
+          <h6>{{ book?.title }}</h6>
+        </div>
+        <div class="book-genre-list">
+          {{ genres }}
+        </div>
+      </div>
+      <div class="book-authors-list">
+        <p>{{ authors }}</p>
+      </div>
+      <div class="book-description-list">
+        <span class="description">{{ book?.description }}...</span>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

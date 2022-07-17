@@ -1,0 +1,8 @@
+@use "/src/styles/mixins" as mixin;
+
+.no-results-img {
+  width: 900px;
+  height: 600px;
+  display: block;
+  @include mixin.margin-center();
+}

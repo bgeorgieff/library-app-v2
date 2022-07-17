@@ -1,0 +1,24 @@
+<div class="new-titles-head-section row">
+  <div class="left-side col-6">
+    <div class="head">{{title}}</div>
+    <div class="count-info" *ngIf="count > 0">
+      <span class="count-number">{{ count }}</span> items total
+    </div>
+  </div>
+  <div *ngIf="showResult" class="right-side col-6">
+    <button
+      type="button"
+      class="block"
+      [ngClass]="{ 'block-light': !isBlockView }"
+      (click)="setView(true)" [disabled]="isBlockView">
+      <img src="../../../../../assets/images/block-dark.svg" alt="blockView" />
+    </button>
+    <button
+      type="button"
+      class="list"
+      [ngClass]="{ 'list-dark': !isBlockView }"
+      (click)="setView(false)" [disabled]="!isBlockView">
+      <img src="../../../../../assets/images/list-dark.svg" alt="listView" />
+    </button>
+  </div>
+</div>

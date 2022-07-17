@@ -1,0 +1,64 @@
+<div [ngClass]="{ active: show }" class="notifications-container">
+  <div class="notifications-header-container">
+    <div class="notification-header">
+      <img
+        class="notification-bell"
+        [src]="notificationBell"
+        alt="notification-bell" />
+      <h3 class="notification-txt">Notifications</h3>
+    </div>
+    <div (click)="closeNotificationBar()" class="close-btn">
+      <img [src]="closeBtn" alt="" />
+    </div>
+  </div>
+  <ng-container *ngIf="userMessages.length > 0">
+    <div class="latest-msg-container">
+      <h3 class="latest-msg-txt">Latest Messages</h3>
+    </div>
+  </ng-container>
+
+  <div
+    [ngClass]="{ unread: i < msgQuantity }"
+    class="sgl-notification"
+    *ngFor="let message of userMessages | slice: 0:6; let i = index">
+    <div class="sgl-notification-header">
+      <div class="notification-author">
+        <h6>{{ message.senderEmail }}</h6>
+      </div>
+      <div class="notification-date">
+        <h6>
+          {{ message.messageSent | date: 'MMMM d, YYYY h:mm aaa':'UTC +6' }}
+        </h6>
+      </div>
+    </div>
+    <div class="notification-content">
+      <p [ngClass]="{ read: message.dateRead }" class="msg-content">
+        <span
+          [ngClass]="!message.dateRead ? 'notify-pointer' : 'd-none'"></span>
+        {{ message.content }}
+      </p>
+    </div>
+    <div class="actions-container">
+      <button
+        *ngIf="!message.dateRead; else deleteBtn"
+        class="light-button"
+        (click)="markAsRead(message.id)">
+        Mark as Read
+      </button>
+      <ng-template #deleteBtn>
+        <button
+          (click)="onDelete(message.id)"
+          [ngClass]="{ 'btn-disabled': !message.dateRead }"
+          [disabled]="!message.dateRead"
+          class="light-button">
+          Remove
+        </button>
+      </ng-template>
+    </div>
+  </div>
+  <div class="view-all-container">
+    <a class="view-all-link" routerLink="/user/notification-archive"
+      >View All Notifications -></a
+    >
+  </div>
+</div>

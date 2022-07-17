@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+  <div class="col-9 user-container">
+    <div class="row profile-container">
+      <div class="col-3">
+        <div class="image-container">
+          <img src="{{userData?.imageUrl}}" alt="profile-picture" class="profile-picture">
+        </div>
+        <form enctype="multipart/form-data" class="form-upload">
+          <label for="file-upload" class="custom-file-upload">
+            Upload
+          </label>
+          <input id="file-upload" type="file" (change)="receiveFile($event)" />
+        </form>
+      </div>
+      <div class="col-9">
+        <div class="user-name">{{userData?.firstName}} {{userData?.lastName}}</div>
+        <div class="row">
+          <div class="col-6">
+            <div class="user-details">
+              <img [src]="emailIcon" alt="e-mail" class="icon-small">
+              <div class="user-details-value">{{userData?.email}}</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="user-details">
+              <img [src]="phoneIcon" alt="phone" class="icon-small">
+              <div class="user-details-value">{{userData?.phoneNumber}}</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="user-details">
+              <img [src]="locationIcon" alt="location" class="icon-small">
+              <div class="user-details-value">{{userData?.streetNumber}} {{userData?.street}} {{userData?.city}}
+                {{userData?.country}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

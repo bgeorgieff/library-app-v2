@@ -1,0 +1,11 @@
+@use "../../../../../styles/mixins" as *;
+
+:host {
+  position: relative;
+  display: block;
+  min-height: calc(100vh - 80px);
+}
+
+.new-books {
+  margin: 80px 0 90px 0;
+}

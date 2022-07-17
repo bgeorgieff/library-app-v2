@@ -1,0 +1,82 @@
+@use '../../../../../styles/colors' as colors;
+@use '../../../../../styles/mixins' as *;
+
+.nav-container {
+  width: 100%;
+  background-color: colors.$base-light-max;
+  position: relative;
+  padding: 0 68px;
+  height: 88px;
+  z-index: 2;
+  @include margin-center();
+
+  .brand-container {
+    @include flex-center($justifyContent: flex-start);
+    height: 100%;
+
+    .brand-name {
+      margin-left: 8px;
+      @include text-format($fontWeight: 900, $fontSize: 18px)
+    }
+  }
+
+  .nav-links,
+  .auth-links {
+    @include flex-center();
+    height: 100%;
+
+    .auth-slash {
+      margin: 0 4px;
+    }
+  }
+
+  .nav-links {
+    .nav-link {
+      margin: 0 24px;
+    }
+  }
+
+  .notifications-bell {
+    height: 14px;
+    width: 16px;
+  }
+
+  .auth-links {
+    justify-content: flex-end;
+
+    .login-links {
+      @include flex-center();
+    }
+  }
+}
+
+.notification-spacing {
+  margin: 0 34px;
+}
+
+.nav-link {
+  @include flex-center();
+  @include text-format($fontWeight: 700, $fontSize: 16px);
+  position: relative;
+
+  .msg-quantity {
+    position: absolute;
+    content: '';
+    top: -8px;
+    right: -5px;
+    background-color: colors.$accent-dark;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    @include text-format($fontSize: 7px, $color: colors.$base-light-max);
+    @include flex-center();
+  }
+
+  .msg-quantity-zero {
+    background-color: colors.$secondary-light;
+  }
+}
+
+.active-link {
+  color: colors.$accent-dark;
+}

@@ -1,0 +1,18 @@
+@use "../../../../../styles/forms" as form;
+@use "../../../../../styles/colors" as colors;
+@use "../../../../../styles/mixins" as *;
+
+.container-success {
+  margin-block: 100px;
+  height: 55vh;
+  @include flex-center();
+  text-align: center;
+}
+
+.head-section-text:not(:last-child) {
+  padding-block: 20px;
+}
+
+.head-section-link {
+  @include text-format($color: colors.$accent-dark, $fontWeight: 600);
+}

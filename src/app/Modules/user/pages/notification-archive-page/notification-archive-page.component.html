@@ -1,0 +1,47 @@
+<div class="row wrapper" *ngIf="messages.length; else noMessages">
+  <div class="col">
+    <div class="row">
+      <div class="col content-header-wrapper">
+        <h2 class="content-header">Notifications Archive</h2>
+      </div>
+    </div>
+    <div class="row align-items-center col-headings">
+      <h3 class="col-4 ps-4">MESSAGE</h3>
+      <h3 class="col-2">FROM</h3>
+      <h3 class="col">RECIEVED ON</h3>
+      <h3 class="col"></h3>
+    </div>
+    <div class="row py-4 align-items-center data-row" *ngFor="let notify of messages">
+      <div class="col-4 ps-4 notify-content">
+        <div class="message-title" [ngClass]="!notify.dateRead ? 'unread' : 'read'"><span [ngClass]="!notify.dateRead ? 'notify-pointer' : 'd-none'"></span>{{ notify.content }}</div>
+      </div>
+      <div class="col-2 extra-info" >
+        <p>{{ notify.senderEmail }}</p>
+      </div>
+      <div class="col extra-info" >
+        <p>{{ notify.messageSent | date: 'MMMM d, YYYY h:mm aaa':'UTC +6' }}</p>
+      </div>
+      <div class="col nopadding d-flex align-items-center justify-content-center" *ngIf="!notify.dateRead; else deleteBtn">
+        <button class="light-button"
+          (click)="markAsRead(notify.id)">Mark as Read</button>
+      </div>
+      <ng-template #deleteBtn>
+        <div class="col nopadding d-flex align-items-center justify-content-center">
+        <button class="light-button" (click)="deleteMessage(notify.id)">Remove</button>
+      </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<ng-template #noMessages>
+  <div class="row justify-content-center no-messages-view">
+    <div class="col-9">
+      <a class="link-to-books" [routerLink]="['/books/all']" routerLinkActive="router-link-active">
+        <span class="less-than-icon"></span>Back to Books
+      </a>
+    </div>
+    <div class="col-9">
+      <p class="no-messages-msg">You haven't received any messages yet</p>
+    </div>
+  </div>
+</ng-template>

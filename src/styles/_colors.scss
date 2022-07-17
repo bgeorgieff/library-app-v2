@@ -1,0 +1,27 @@
+@use 'sass:color';
+
+$base-bg: #F4F4F4; /* body background */
+$base-light-max: #FFFFFF; /* card background, footer text, button text */
+$base-dark-max: #000000; /* titles, text */
+$base-dark-max-a84: color.scale($base-dark-max, $alpha: -16%);
+$base-dark-max-a15: color.scale($base-dark-max, $alpha: -85%);
+
+$accent-light: #F96D1E; /* genre, asterix for the required fields */
+$accent-dark: #DE411B; /* button background, link */
+$error: #FF0000; /* error text and border */
+
+$primary: #494949; /* book description */
+$primary-dark: #333333; /* author name */
+$cool-gray: #E5E7EB; /*border */
+$cool-gray-secondary: #F9FAFB; /*input */
+
+$secondary-dark-max: #111827; /* form title, checkbox label */
+$secondary-dark: #374151; /* labels */
+$secondary-neutral: #4B5563; /* form description text */
+$secondary-light: #6B7280; /* placeholder text */
+$secondary-light-2: #F2F2F2; /*buttons divider*/
+
+$neutral-light-1: #D1D5DB; /* input field border */
+$neutral-light-2: #D6D6D6; /* map border */
+
+$button-disabled: #9CA3AF; /* disabled button */

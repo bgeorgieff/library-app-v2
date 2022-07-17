@@ -1,0 +1,43 @@
+@use '/src/styles/colors' as colors;
+@use '/src/styles/mixins' as mixins;
+@use '/src/styles/tables' as tables;
+
+:host {
+  position: relative;
+  display: block;
+  margin-top: 85px;
+}
+
+.wrapper {
+  margin: 23px 0 200px 0;
+}
+
+.less-than-icon::before {
+  content: '<';
+}
+
+.less-than-icon {
+  padding-right: 7px;
+}
+
+.dashboard-link {
+  @include mixins.text-format(14px, 500, 20px, colors.$accent-light);
+}
+
+.dashboard-link:active {
+  color: colors.$accent-light;
+}
+
+.norents-section {
+  min-height: calc(100vh - 400px);
+}
+
+.norents-msg {
+  margin-block: 50px;
+  @include mixins.text-format(
+    24px,
+    700,
+    29px,
+    $color: colors.$secondary-dark-max
+  );
+}

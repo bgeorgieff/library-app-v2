@@ -1,0 +1,15 @@
+@use "../../../../../styles/colors" as colors;
+@use "../../../../../styles/mixins" as mixin;
+
+.book-section {
+  background-color: colors.$base-light-max;
+  @include mixin.border-radius();
+  @include mixin.flex-center($justifyContent: flex-start);
+  margin: 116px 27px;
+  min-height: 600px;
+}
+
+:host {
+  position: relative;
+  display: block;
+}

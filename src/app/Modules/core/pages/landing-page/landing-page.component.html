@@ -1,0 +1,12 @@
+<app-loading-spinner></app-loading-spinner>
+<ng-container *ngIf="isLoaded()">
+  <app-info-section
+  [readersCount]="readersCount"
+  [genresCount]="genresCount"
+  [booksCount]="allBooksCount"></app-info-section>
+  <div class="new-books">
+    <app-new-titles-head [title]="title" [count]="newTitlescount"></app-new-titles-head>
+    <app-new-titles-section [books]="books"></app-new-titles-section>
+  </div>
+</ng-container>
+

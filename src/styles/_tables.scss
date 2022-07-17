@@ -1,0 +1,105 @@
+@use "./colors" as colors;
+@use "./mixins" as mixins;
+
+.wrapper {
+  background-color: colors.$base-light-max;
+  border-radius: 16px 16px 8px 8px;
+  justify-content: center;
+}
+
+.content-header-wrapper {
+  @include mixins.flex-center($justifyContent: space-between);
+  padding: 0;
+}
+
+.content-header {
+  margin: 39px 0 39px 24px;
+  @include mixins.text-format($fontSize: 24px, $fontWeight: 700);
+}
+
+.col-headings {
+  padding-block: 12px;
+  @include mixins.text-format($fontSize: 12px, $fontWeight: 500, $color: colors.$secondary-light);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: colors.$cool-gray-secondary;
+  border-bottom: 1px solid colors.$cool-gray;
+}
+
+.data-row:not(:last-child) {
+  border-bottom: 1px solid colors.$cool-gray;
+}
+
+.light-button {
+  margin-right: 24px;
+  padding: 8px 16px;
+  @include mixins.text-format($fontWeight: 500, $color: colors.$secondary-dark);
+  background-color: transparent;
+  border: 1px solid colors.$neutral-light-1;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.book {
+  cursor: pointer;
+
+  &-cover {
+    margin-block: 16px;
+    height: 104px;
+    min-width: 80px;
+  }
+
+  &-cover-img {
+    height: 100%;
+    border-radius: 4px;
+  }
+
+  &-title {
+    margin-left: 16px;
+    @include mixins.text-format($fontWeight: 500, $color: colors.$secondary-dark-max);
+  }
+}
+
+.extra-info {
+  @include mixins.text-format($color: colors.$secondary-light);
+}
+
+.btn-disabled {
+  background-color: colors.$button-disabled;
+  pointer-events: none;
+}
+
+.actions {
+  display: flex;
+}
+
+.nopadding {
+  padding: 0;
+}
+
+.read{
+  @include mixins.text-format($fontWeight: 400, $color: colors.$secondary-light);
+}
+
+.unread{
+  @include mixins.text-format($fontWeight: 600, $color: colors.$secondary-dark-max);
+}
+
+.notify-pointer{
+  position: relative;
+  bottom: 3px;
+  width: 9px;
+  height: 9px;
+  background-color: colors.$accent-dark;
+  border-radius: 50%;
+  padding: 0 9px 0 0;
+  margin-right: 5px;
+  font-size: 7px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.notify-content{
+  @include mixins.flex-center($justifyContent: space-between);
+}

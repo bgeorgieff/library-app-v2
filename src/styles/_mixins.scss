@@ -1,0 +1,33 @@
+@use "./colors" as colors;
+
+@mixin flex-center($justifyContent: null, $alignItems: null) {
+  display: flex;
+  justify-content: $justifyContent or center;
+  align-items: $alignItems or center;
+}
+@mixin page-title {
+  margin-top: 98px;
+  margin-bottom: 106px;
+  @include text-format($fontSize: 48px, $fontWeight: 700, $lineHeight: normal, $textAlign: center);
+}
+@mixin margin-center($my: null) {
+  margin: $my or 0 auto;
+}
+
+@mixin text-format(
+  $fontSize: null,
+  $fontWeight: null,
+  $lineHeight: null,
+  $color: null,
+  $textAlign: null
+) {
+  font-size: $fontSize or 14px;
+  font-weight: $fontWeight or 400;
+  line-height: $lineHeight or 17px;
+  text-align: $textAlign;
+  color: $color or colors.$base-dark-max;
+}
+
+@mixin border-radius($radius: null) {
+  border-radius: $radius or 16px;
+}

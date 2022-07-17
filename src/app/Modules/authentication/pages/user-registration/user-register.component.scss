@@ -1,0 +1,19 @@
+@use "../../../../../styles/forms" as form;
+@use "../../../../../styles/colors" as colors;
+@use "../../../../../styles/mixins" as *;
+
+.container {
+  @include margin-center($my: 60px);
+}
+
+.full-form-container {
+  max-width: 808px;
+  background-color: colors.$base-light-max;
+  padding: 51px 27px 23px 27px;
+  @include margin-center();
+  border-radius: 8px;
+}
+
+.d-none {
+  display: none;
+}

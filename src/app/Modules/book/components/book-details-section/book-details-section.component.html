@@ -1,0 +1,57 @@
+<section class="book-details">
+  <section class="details-section">
+    <div class="image-container">
+      <img class="cover" alt="bookCover" [src]="book.cover" />
+    </div>
+    <section class="info-section">
+      <div class="title">
+        <h1>{{book.title}}</h1>
+      </div>
+      <div class="authors">
+        <p>{{bookAuthors}}</p>
+      </div>
+      <div class="rating">
+        <app-book-rating [rating]="bookRating" [editable]="false"></app-book-rating>
+      </div>
+      <div class="genres">
+        <p>{{bookGenres}}</p>
+      </div>
+      <div class="date-quantity">
+        <p>Date added: <span class="bold-400">{{book.dateAdded | date:"dd.MM.yyyy"}}</span></p>
+      </div>
+      <div class="date-quantity">
+        <p>Quantity: <span class="bold-400">{{book.quantity}}</span></p>
+      </div>
+
+      <div [ngSwitch]="book.quantity > 0">
+        <button (click)="rentBook(book.id)" *ngSwitchCase="true" class="btn-rent">Rent book</button>
+        <button *ngSwitchCase="false" class="btn-unavailable">Unavailable</button>
+      </div>
+    </section>
+  </section>
+
+  <div class="description-section">
+    <div class="description-header">
+      <h1>Description</h1>
+    </div>
+    <div class="description-content">
+      <p>{{book.description}}</p>
+    </div>
+  </div>
+
+  <div class="description-section" *ngIf="book.comments.length > 0">
+    <div class="description-header">
+      <h1>Comments</h1>
+    </div>
+      <div class="row comment-container" *ngFor="let comment of comments">
+          <div class="col-9">
+            <div class="user-name"> {{comment.user.substring(0, comment.user.lastIndexOf("@"))}}</div>
+            <div class="comment-text"> {{comment.commentText}}</div>
+          </div>
+          <div class="col-3 raiting-container">
+            <app-book-rating [rating]="comment.rating" [editable]="false"></app-book-rating>
+            <span class="rating-number">{{comment.rating}} / {{maxRating}}</span>
+          </div>
+      </div>
+  </div>
+</section>

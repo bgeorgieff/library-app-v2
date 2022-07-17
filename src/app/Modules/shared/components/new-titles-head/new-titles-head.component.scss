@@ -1,0 +1,53 @@
+@use '../../../../../styles/colors' as colors;
+@use '../../../../../styles/mixins' as *;
+
+.new-titles-head-section {
+  margin-bottom: 60px;
+  margin-left: 8px;
+  margin-right: 8px;
+  justify-content: space-between;
+  .left-side {
+    .head {
+      @include text-format($fontWeight: 700, $fontSize: 24px, $lineHeight: 29px);
+    }
+    .count-number {
+      @include text-format($fontWeight: 700);
+    }
+  }
+
+  .right-side {
+    @include text-format($fontWeight: 700);
+    width: 75px;
+    height: 36px;
+    background-color: colors.$base-light-max;
+    @include flex-center();
+    padding: 0;
+    border-radius: 6px;
+  }
+}
+
+.block {
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  border-right: 1px solid colors.$secondary-light-2;
+  opacity: 1;
+  background: none;
+}
+
+.block-light {
+  background-size: 23px 20px;
+  height: 20px;
+  opacity: 0.5;
+}
+
+.list {
+  opacity: 0.5;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+.list-dark {
+  opacity: 1;
+}

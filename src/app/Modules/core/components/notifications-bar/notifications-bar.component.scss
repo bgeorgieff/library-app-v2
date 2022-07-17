@@ -1,0 +1,101 @@
+@use "/src/styles/mixins" as mixin;
+@use "/src/styles/colors" as colors;
+@use "/src/styles/tables" as tables;
+@use "/src/styles/forms" as forms;
+
+@mixin notification-padding() {
+  padding: 16px 24px;
+}
+
+.notifications-container {
+  @include mixin.border-radius($radius: 8px);
+  position: absolute;
+  top: -200%;
+  right: 0;
+  z-index: 1;
+  background-color: colors.$base-light-max;
+  width: 373px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
+
+  .notifications-header-container {
+    @include mixin.flex-center($justifyContent: space-between);
+    @include notification-padding();
+
+    .notification-header {
+      @include mixin.flex-center($justifyContent: flex-start);
+    }
+
+    .notification-bell {
+      margin-right: 10px;
+    }
+  }
+
+  .latest-msg-container {
+    background: colors.$cool-gray-secondary;
+
+    .latest-msg-txt {
+      @include notification-padding();
+      @include mixin.text-format($fontWeight: 500, $fontSize: 12px, $lineHeight: 14px);
+      text-transform: uppercase;
+      color: colors.$secondary-light;
+    }
+  }
+
+  .sgl-notification {
+    @include notification-padding();
+    border-bottom: 1px solid colors.$cool-gray;
+
+    .sgl-notification-header {
+      @include mixin.flex-center($justifyContent: space-between);
+      margin: 10px 0;
+
+      .notification-author {
+        @include mixin.text-format($color: colors.$secondary-light);
+      }
+
+      .notification-date {
+        @include mixin.text-format($color: colors.$secondary-light);
+      }
+    }
+
+    .notification-content {
+      .msg-content {
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+
+    .actions-container {
+      margin-top: 10px;
+
+      .notification-action {
+        margin-right: 8px;
+        border: 1px solid colors.$neutral-light-1;
+        min-width: 84px;
+        height: 36px;
+        background-color: colors.$base-light-max;
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.05));
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .view-all-container {
+    margin: 16px 0;
+    @include mixin.flex-center();
+
+    .view-all-link {
+      @include mixin.text-format($color: colors.$accent-light, $fontWeight: 500);
+    }
+  }
+}
+
+.close-btn {
+  cursor: pointer;
+}
+
+.notifications-container.active {
+  top: 82px;
+}

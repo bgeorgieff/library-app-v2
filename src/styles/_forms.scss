@@ -1,0 +1,155 @@
+@use "./colors" as colors;
+@use "./mixins" as *;
+
+.container {
+  @include margin-center($my: 60px);
+}
+
+.full-form-container {
+  max-width: 808px;
+  background-color: colors.$base-light-max;
+  padding: 51px 27px 23px 27px;
+  border-radius: 8px;
+}
+
+.head-section {
+  text-align: center;
+  &-logo {
+    width: 49px;
+  }
+  &-title {
+    margin: 24px 0 5px 0;
+    @include text-format($fontWeight: 700, $fontSize: 30px, $lineHeight: 36px);
+  }
+  &-text {
+    @include text-format($lineHeight: 20px, $color: colors.$secondary-neutral);
+    a {
+      color: colors.$accent-dark;
+    }
+  }
+}
+
+.form-container {
+  margin-top: 24px;
+  .required {
+    color: colors.$accent-light;
+  }
+  .form-control {
+    @include text-format();
+    display: block;
+    margin-top: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 38px;
+    padding: 0.375rem 0.75rem;
+    background-color: colors.$base-light-max;
+    background-clip: padding-box;
+    border: 1px solid colors.$neutral-light-1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .form-select {
+    @include text-format();
+    display: block;
+    margin-top: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 9px 12px;
+    -moz-padding-start: calc(12px - 3px);
+    background-color: colors.$base-light-max;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 12px;
+    border: 1px solid colors.$neutral-light-1;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  .validation-border {
+    border-color: colors.$error;
+  }
+}
+
+.btn-form {
+  width: 117px;
+  height: 38px;
+  font-size: 14px;
+  background: colors.$accent-dark;
+  border: none;
+  border-radius: 5px;
+  color: colors.$base-light-max;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-disabled {
+  background: colors.$neutral-light-2;
+  color: colors.$base-light-max;
+  cursor: default;
+}
+
+.button-container {
+  @include flex-center($justifyContent: flex-end);
+  margin-top: 20px;
+}
+
+.form-label {
+  margin-bottom: 4px;
+}
+
+.phone-number {
+  @include text-format();
+  border: none;
+  outline: none;
+  background-color: colors.$base-light-max;
+}
+
+.required:after {
+  content: "*";
+  color: colors.$accent-light;
+}
+
+.phone-number {
+  -webkit-appearance: textarea;
+  -moz-appearance: textarea;
+  appearance: textarea;
+}
+
+.phone-number:focus {
+  outline: none;
+}
+
+.country-code {
+  padding-top: 4px;
+  @include text-format();
+  display: inline-block;
+  width: 40px;
+  outline: none;
+  border: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.error-message {
+  @include text-format($fontSize: 12px, $color: colors.$error);
+  margin-top: 5px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  outline: 0;
+}

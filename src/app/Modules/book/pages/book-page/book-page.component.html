@@ -1,0 +1,6 @@
+<app-loading-spinner></app-loading-spinner>
+<section class="book-section">
+  <ng-container *ngIf="bookData">
+    <app-book-details-section [book]="bookData"></app-book-details-section>
+  </ng-container>
+</section>

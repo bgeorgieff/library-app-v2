@@ -1,0 +1,48 @@
+<app-loading-spinner></app-loading-spinner>
+
+<div class="row justify-content-center">
+
+  <div class="col-9">
+    <a class="dashboard-link" [routerLink]="['/user/dashboard']" routerLinkActive="router-link-active">
+      <span class="less-than-icon"></span>Back to Dashboard
+    </a>
+  </div>
+
+  <div class="col-9 wrapper" *ngIf="returnedBooks.length; else norents">
+    <div class="row">
+      <div class="col content-header-wrapper">
+        <h2 class="content-header">Returned Books</h2>
+      </div>
+    </div>
+    <div class="row align-items-center col-headings">
+      <h3 class="col ps-4">Book</h3>
+      <h3 class="col-3">Rented on</h3>
+      <h3 class="col-3">Returned on</h3>
+    </div>
+    <div>
+      <div class="row align-items-center data-row" *ngFor="let rent of returnedBooks">
+        <div class="col ps-4 book">
+          <div class="row align-items-center" (click)="onBookClick(rent.bookId)">
+            <div class="col-2 book-cover">
+              <img [src]="rent.bookCover" alt="" class="book-cover-img">
+            </div>
+            <div class="col-7">
+              <p class="book-title">{{ rent.bookTitle }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 extra-info">
+          <p>{{ rent.dateRented | date: 'MMMM d, YYYY h:mm aaa':'UTC +6' }}</p>
+        </div>
+        <div class="col-3 extra-info">
+          <p>{{ rent.dateForReturn | date: 'MMMM d, YYYY h:mm aaa':'UTC +6' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #norents>
+    <div class="col-9 norents-section">
+      <p class="norents-msg">You haven't returned any books yet</p>
+    </div>
+  </ng-template>
+</div>

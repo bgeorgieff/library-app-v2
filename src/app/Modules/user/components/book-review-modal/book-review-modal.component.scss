@@ -1,0 +1,149 @@
+@use "/src/styles/colors" as colors;
+@use "/src/styles/mixins" as mixin;
+@use "/src/styles/tables" as tables;
+@use "/src/styles/forms" as forms;
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: colors.$base-dark-max-a15;
+  z-index: 1;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 17px 24px 12px 24px;
+  width: 538px;
+  background-color: colors.$base-light-max;
+  @include mixin.border-radius($radius: 8px);
+  box-shadow: 0 0 20px 0 colors.$base-dark-max-a15;
+}
+
+.modal-container.active {
+  display: block;
+}
+
+.modal-title {
+  margin-top: 17px;
+  @include mixin.text-format($fontSize: 22px, $fontWeight: 700, $color: colors.$secondary-dark-max);
+}
+
+.review-book {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  opacity: 0.3;
+  filter: blur(7px);
+  transition: all 0.15s ease-in;
+
+  &-details {
+    margin-left: 17px;
+  }
+
+  &-title {
+    @include mixin.text-format($fontSize: 18px, $fontWeight: 700, $color: colors.$base-dark-max);
+  }
+
+  &-author {
+    margin-top: 8px;
+    @include mixin.text-format($fontSize: 14px, $fontWeight: 400, $color: colors.$primary-dark);
+  }
+}
+
+.review-book.loaded {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.round-corners {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.review-label {
+  @include mixin.text-format($fontSize: 14px, $fontWeight: 500, $color: colors.$secondary-dark);
+}
+
+.review-stars {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  transform: scale(0.66) translateX(35px);
+  cursor: pointer;
+}
+
+.ratio {
+  @include mixin.text-format($fontSize: 16px, $fontWeight: 600, $color: colors.$secondary-dark-max);
+  width: 30px;
+  text-align: right;
+}
+
+.review-text {
+  margin-top: 12px;
+  padding: 10px;
+  width: 100%;
+  @include mixin.text-format($lineHeight: 18px);
+  resize: none;
+  border: 1px solid colors.$neutral-light-1;
+  border-radius: 5px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: colors.$button-disabled;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+.review-buttons {
+  margin-top: 34px;
+  text-align: right;
+}
+
+.cacel-button {
+  margin: 0;
+}
+
+.post-button {
+  margin: 0 0 0 12px;
+  color: colors.$base-light-max;
+  background-color: colors.$accent-dark;
+  border: none;
+
+  &:disabled {
+    background-color: colors.$button-disabled;
+    pointer-events: none;
+  }
+}
+
+.error-border {
+  border: 1px solid colors.$accent-dark;
+}
+
+.message-txt {
+  position: absolute;
+  bottom: 59px;
+  color: colors.$accent-dark;
+}

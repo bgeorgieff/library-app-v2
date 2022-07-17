@@ -1,0 +1,40 @@
+<div class="container-fluid p-0">
+  <nav class="row nav-container">
+    <div class="col-4 brand-container">
+      <a routerLink="/">
+        <img src="{{ logo }}" alt="brand-logo" />
+      </a>
+      <a routerLink="/">
+        <h1 class="brand-name">The Curious Readers</h1>
+      </a>
+    </div>
+    <div class="col-4">
+      <ul class="nav-links" *ngIf="isLoggedIn()">
+        <li><a class="nav-link notification-spacing" routerLink="/books/all" routerLinkActive="active-link">Books</a>
+        </li>
+        <li><a class="nav-link" routerLink="/user/dashboard" routerLinkActive="active-link">Dashboard</a></li>
+      </ul>
+    </div>
+    <div class="col-4">
+      <ul class="auth-links" *ngIf="!getAuthLinks()">
+        <li class="login-links" *ngIf="!isLoggedIn(); else logout">
+          <a class="nav-link" routerLink="/account/login">Log In</a>
+          <span class="auth-slash">/</span>
+          <a class="nav-link" routerLink="/account/register">Register</a>
+        </li>
+        <ng-template #logout>
+          <li class="notification-spacing">
+            <a class="nav-link" (click)="openNotificationBar()">
+              <img [src]="notification" class="notifications-bell" alt="notifications">
+              <span [ngClass]="{ 'msg-quantity-zero': !newMessages}" class="msg-quantity">{{ newMessages < 9 ? newMessages : '9+'}}</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" (click)="logOut()">Log Out</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </nav>
+  <app-notifications-bar></app-notifications-bar>
+</div>

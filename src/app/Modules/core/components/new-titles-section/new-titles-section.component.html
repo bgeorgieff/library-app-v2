@@ -1,0 +1,9 @@
+<div class="row">
+  <app-book-card
+    [isBlockView]="isBlockView"
+    [ngClass]="isBlockView ? 'col-4 p-0' : 'col-12'"
+    *ngFor="let book of books; let i = index"
+    [book]="book"
+    [index]="i"
+  ></app-book-card>
+</div>

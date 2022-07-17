@@ -1,0 +1,11 @@
+@use '../../../../../styles/mixins' as *;
+
+.container {
+  height: 55vh;
+  @include flex-center();
+  text-align: center;
+}
+
+.head-link{
+  margin-top: 20px;
+}

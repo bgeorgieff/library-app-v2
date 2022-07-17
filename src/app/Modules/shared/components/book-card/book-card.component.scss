@@ -1,0 +1,113 @@
+@use "../../../../../styles/colors" as colors;
+@use "../../../../../styles/mixins" as *;
+
+@mixin genre-and-author {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin author {
+  max-width: 180px;
+  max-height: 56px;
+}
+@mixin description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+@mixin coverSize {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  min-width: 140px;
+}
+
+.cover {
+  @include coverSize();
+  border: 1px solid colors.$base-light-max;
+  border-radius: 4px;
+  background-size: cover;
+  min-height: 245px;
+  max-height: 250px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.card {
+  margin: 8px;
+  background-color: colors.$base-light-max;
+  border-radius: 16px;
+  min-height: 300px;
+  .image-container {
+    padding: 24px;
+  }
+  .book-info {
+    text-align: left;
+    padding: 21px 24px 24px 0;
+
+    .book-header {
+      overflow: hidden;
+      display: -webkit-box;
+      max-height: 48.72px;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      @include text-format(
+        $fontWeight: 700,
+        $fontSize: 20px,
+        $lineHeight: 24px
+      );
+    }
+    .book-author {
+      @include author();
+      @include genre-and-author();
+      @include text-format($color: colors.$primary-dark);
+    }
+    .book-genre {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      @include genre-and-author();
+      @include text-format($color: colors.$accent-light);
+    }
+    .book-description {
+      -webkit-line-clamp: 4;
+      @include description();
+    }
+    .description {
+      @include text-format($lineHeight: 18px, $color: colors.$primary-dark);
+    }
+  }
+}
+
+.book-header-list{
+  max-width: 600px;
+}
+.book-genre-list {
+  max-width: 300px;
+  @include genre-and-author();
+  @include text-format($color: colors.$accent-light);
+  margin: 20px 0 10px 0;
+  display: inline;
+}
+
+.book-authors-list {
+  @include author();
+  @include text-format($color: colors.$primary-dark);
+  margin: 12px 0;
+}
+
+.header-genre-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-description-list {
+  @include description();
+  @include text-format($lineHeight: 18px, $color: colors.$primary-dark);
+  -webkit-line-clamp: 8;
+}

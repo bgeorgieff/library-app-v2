@@ -1,0 +1,11 @@
+<section>
+  <ng-container *ngFor="let starNumber of maxRating; let i = index">
+    <img 
+    class="icon" 
+    [src]="i+1 <= rating ? star : star_empty" 
+    alt="star-icon" 
+    (click)="changeRating($event, i+1)" 
+    (mouseover)="changeRating($event, i+1)"
+    (mouseout)="changeRating($event)">
+  </ng-container>
+</section>

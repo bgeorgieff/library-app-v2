@@ -1,0 +1,15 @@
+<app-search-section (searchStr)="onSearch($event)"></app-search-section>
+<app-new-titles-head [title]="setTitle()" [showResult]="foundResults"></app-new-titles-head>
+<app-book-card-section
+  *ngIf="foundResults; else noResult"
+  [books]="books"
+  infiniteScroll
+  [infiniteScrollDistance]="0"
+  [infiniteScrollThrottle]="250"
+  (scrolled)="onScroll()"></app-book-card-section>
+<ng-template #noResult>
+  <app-no-results-found></app-no-results-found>
+</ng-template>
+<div class="loader-container">
+  <app-loading-spinner></app-loading-spinner>
+</div>

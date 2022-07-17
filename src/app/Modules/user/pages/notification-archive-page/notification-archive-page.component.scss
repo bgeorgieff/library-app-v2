@@ -1,0 +1,49 @@
+@use "/src/styles/colors" as colors;
+@use "/src/styles/mixins" as mixins;
+@use "/src/styles/tables" as tables;
+@use "/src/styles/forms" as forms;
+
+.wrapper {
+    margin: 128px auto 358px auto;
+}
+
+.data-row {
+    min-height: 72px;
+}
+
+.message {
+    cursor: pointer;
+
+    &-title {
+        margin: 0;
+        line-height: 20px;
+    }
+}
+
+.link-to-books {
+    @include mixins.text-format(14px, 500, 20px, colors.$accent-light);
+}
+
+.link-to-books:active {
+    color: colors.$accent-light;
+}
+
+.less-than-icon {
+    padding-right: 7px;
+}
+
+.less-than-icon::before {
+    content: '<';
+}
+
+.no-messages-msg {
+    margin-block: 50px;
+    @include mixins.text-format(24px,
+        700,
+        29px,
+        $color: colors.$secondary-dark-max );
+}
+
+.no-messages-view {
+    margin: 85px auto 400px auto;
+}

@@ -1,0 +1,6 @@
+<app-loading-spinner></app-loading-spinner>
+<div class="container">
+  <app-user-details [userData]="userData"></app-user-details>
+  <app-active-rents [activeRents]="activeRents"></app-active-rents>
+</div>
+<app-book-review-modal *ngIf="isModalVisible" [userId]="userData.id"></app-book-review-modal>

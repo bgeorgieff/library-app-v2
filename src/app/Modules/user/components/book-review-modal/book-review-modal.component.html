@@ -1,0 +1,28 @@
+<div @enterModalTrigger [ngClass]="{'active': isVisible}" class="modal-container">
+  <h1 class="modal-title">Comment and rate</h1>
+  <div class="review-book" [ngClass]="{'loaded': isBookLoaded}">
+    <div class="book-cover round-corners">
+      <img [src]="book?.cover" alt="book cover" class="book-cover-img">
+    </div>
+    <div class="review-book-details">
+      <p class="review-book-title">{{ book?.title }}</p>
+      <p class="review-book-author">{{ bookAuthors.join(", ") }}</p>
+    </div>
+  </div>
+  <div class="review-rating">
+    <p class="review-label">Add your comment and rate this book</p>
+    <div class="review-stars">
+      <app-book-rating [(rating)]="bookRating" [editable]="true" class="stars"></app-book-rating>
+      <span class="ratio">{{ bookRating }}/5</span>
+    </div>
+  </div>
+  <div>
+    <textarea [(ngModel)]="textValue" required id="txt" #txt="ngModel" (ngModelChange)="isTextAreaEmpty()" 
+      class="review-text" [ngClass]="{'error-border': txt.invalid && (txt.dirty || txt.touched)}" rows="5" placeholder="Please leave a comment"></textarea>
+    <div class="error-message message-txt" *ngIf="txt.invalid && (txt.dirty || txt.touched)">Comment is required</div>
+    <div class="review-buttons">
+      <button type="button" class="light-button cacel-button" (click)="close()">Cancel</button>
+      <button type="submit" class="light-button post-button" (click)="reviewBook()" [disabled]="!isReviewValid()">Post</button>
+    </div>
+  </div>
+</div>

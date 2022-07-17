@@ -1,0 +1,23 @@
+@use "../../../../../styles/colors" as *;
+@use "../../../../../styles/mixins" as *;
+
+.info-card {
+  padding: 20px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  background-color: $base-light-max;
+  border-radius: 16px;
+}
+
+.app-title {
+    line-height: normal;
+}
+
+.card-count {
+  @include text-format($fontSize: clamp(40px, 5vw, 48px), $fontWeight: 700, $lineHeight: 0.9, $textAlign: center);
+}
+
+.card-title {
+  padding-block: 12px;
+  @include text-format($fontSize: clamp(20px, 3vw, 24px), $fontWeight: 700, $lineHeight: normal, $textAlign: center);
+}

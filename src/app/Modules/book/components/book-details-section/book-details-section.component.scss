@@ -1,0 +1,109 @@
+@use '../../../../../styles/mixins' as mixin;
+@use '../../../../../styles/colors' as colors;
+
+@mixin button($bg-color: null) {
+  border: none;
+  border-radius: 5px;
+  background-color: $bg-color or colors.$accent-dark;
+  margin-top: 31px;
+  width: 117px;
+  height: 38px;
+}
+
+.details-section {
+  margin: 38px 36px 0px 36px;
+  @include mixin.flex-center($justifyContent: flex-start);
+}
+
+.cover {
+  max-width: 256px;
+  height: auto;
+  max-height: 332px;
+  border-radius: 4px;
+  padding: 0;
+}
+
+.info-section {
+  padding-left: 33px;
+}
+
+.title {
+  @include mixin.text-format(36px, 700, 44px, colors.$base-dark-max);
+}
+
+.authors {
+  margin-top: 12px;
+  @include mixin.text-format(24px, 400, 29px, colors.$primary-dark);
+}
+
+.rating {
+  margin-top: 18px;
+}
+
+.genres {
+  margin-top: 36px;
+  @include mixin.text-format(18px, 500, 22px, colors.$accent-light);
+}
+
+.date-quantity {
+  margin-top: 16px;
+  @include mixin.text-format(18px, 600, 22px, colors.$primary-dark);
+}
+
+.btn-rent {
+  @include button();
+  @include mixin.text-format(16px, 600, 20px, colors.$base-light-max);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-unavailable {
+  @include button(colors.$button-disabled);
+  @include mixin.text-format(16px, 600, 20px, colors.$base-light-max);
+}
+
+.description-section {
+  margin: 36px 36px 27px 36px;
+}
+
+.description-header {
+  @include mixin.text-format(18px, 700, 22px, colors.$base-dark-max);
+}
+
+.description-content {
+  margin-top: 9px;
+  @include mixin.text-format(18px, 400, 24px, colors.$primary);
+}
+
+.bold-400 {
+  font-weight: 400;
+}
+
+.comment-container{
+  @include mixin.flex-center($justifyContent: space-between);
+  padding: 17px 0px;
+  border-bottom: 1px solid colors.$neutral-light-2;
+}
+
+.comment-container:last-child{
+  border-bottom: none;
+}
+
+.user-name{
+  @include mixin.text-format(14px, 700, 22px, colors.$primary-dark);
+}
+
+.comment-text{
+  @include mixin.text-format(14px, 400, 22px, colors.$secondary-light);
+}
+
+.raiting-container{
+  @include mixin.flex-center($justifyContent: flex-end);
+}
+
+.rating-number{
+  margin-left: 10px;
+  font-weight: 600;
+}

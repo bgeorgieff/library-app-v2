@@ -1,0 +1,28 @@
+@use "/src/styles/colors" as colors;
+@use "/src/styles/mixins" as mixins;
+@use "/src/styles/tables" as tables;
+@use "/src/styles/forms" as forms;
+
+.wrapper {
+  margin-top: 36px;
+}
+
+.returned-books-ref {
+  padding-inline: 25px;
+}
+
+.browse-books-ref {
+  margin-right: 12px;
+  padding-inline: 25px;
+  color: colors.$base-light-max;
+  background-color: colors.$accent-dark;
+  border: none;
+}
+
+.norents-wrapper {
+  margin-top: 9px;
+}
+
+.norents-header {
+  color: colors.$button-disabled;
+}

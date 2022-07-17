@@ -1,0 +1,58 @@
+<div *ngIf="activeRents.length; else norents">
+  <div class="row justify-content-center">
+    <div class="col-9 wrapper">
+      <div class="row">
+        <div class="col content-header-wrapper">
+          <h2 class="content-header">Active rents</h2>
+          <button type="button" class="light-button returned-books-ref" (click)="goToReturnedBooks()">View Returned
+            Books</button>
+        </div>
+      </div>
+      <div class="row align-items-center col-headings">
+        <h3 class="col-4 ps-4">Book</h3>
+        <h3 class="col">Rented on</h3>
+        <h3 class="col">Due to</h3>
+        <h3 class="col-3"></h3>
+      </div>
+      <div class="row align-items-center data-row" *ngFor="let rent of activeRents">
+        <div class="col-4 ps-4 book">
+          <div class="row align-items-center" (click)="goToBookDetails(rent.bookId)">
+            <div class="col-3 book-cover">
+              <img [src]="rent.bookCover" alt="" class="book-cover-img">
+            </div>
+            <div class="col">
+              <p class="book-title">{{ rent.bookTitle }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col extra-info">
+          <p>{{ rent.dateRented | date:'MMMM d, YYYY h:mm aaa':'UTC +6' }}</p>
+        </div>
+        <div class="col extra-info">
+          <p>{{ rent.dateForReturn | date: 'MMMM d, YYYY h:mm aaa':'UTC +6' }}</p>
+        </div>
+        <div class="col-3 justify-content-end nopadding actions">
+          <button type="button" class="light-button" #btn (click)="onProlong(rent.bookTitle); btn.disabled = true" [ngClass]="{'btn-disabled' : btn.disabled}">Prolong</button>
+          <button type="button" class="light-button" (click)="onReview(rent.bookId)">Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #norents>
+  <div class="row justify-content-center">
+    <div class="col-9 norents-wrapper">
+      <div class="row">
+        <div class="col content-header-wrapper">
+          <h2 class="content-header norents-header">You have no active rents</h2>
+          <div>
+            <button type="button" class="light-button browse-books-ref" (click)="goToNewBooks()">Browse New
+              Books</button>
+            <button type="button" class="light-button returned-books-ref" (click)="goToReturnedBooks()">View Returned
+              Books</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

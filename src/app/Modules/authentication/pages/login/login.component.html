@@ -1,0 +1,37 @@
+<div class="container full-form-container login-container">
+  <div class="head-section">
+    <img src="{{logo}}" class="head-section-logo" alt="The curious readers logo" />
+    <h1 class="head-section-title">Log in to your account</h1>
+    <p class="head-section-text">
+      Don't have an account? <a routerLink="/account/register">Sign up here</a>
+    </p>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="form-container">
+      <input type="text" class="form-control" [ngClass]="{ 'validation-border': isInvalid('email') }"
+        formControlName="email" placeholder="Email address" />
+      <div *ngIf="isInvalid('email')" class="error-message">
+        <small *ngIf="email.errors?.['required']">Email is required!</small>
+        <small *ngIf="email.errors?.['maxlength']">
+          Last Name cannot be longer than 256 characters!
+        </small>
+      </div>
+    </div>
+    <div class="form-container">
+      <input type="password" class="form-control" [ngClass]="{ 'validation-border': isInvalid('password') }"
+        formControlName="password" placeholder="Password" />
+      <div *ngIf="isInvalid('password')" class="error-message">
+        <small *ngIf="password.errors?.['required']">Password is required!</small>
+      </div>
+    </div>
+    <div class="forgot-password">
+      <a routerLink="/account/resetPassword" class="pass-options">Forgot your password?</a>
+    </div>
+    <div class="login-button-container">
+      <button type="submit" [ngClass]="{ 'btn-disabled': loginForm.invalid }" class="btn-form login-btn">
+        Sign in
+      </button>
+    </div>
+  </form>
+</div>

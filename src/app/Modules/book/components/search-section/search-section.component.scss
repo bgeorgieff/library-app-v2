@@ -1,0 +1,40 @@
+@use "../../../../../styles/mixins" as *;
+@use "../../../../../styles/colors" as colors;
+
+.search-form-container {
+  @include flex-center();
+  margin-bottom: 70px;
+}
+
+.search-input {
+  border: 1px solid colors.$cool-gray;
+  border-radius: 16px;
+  width: 727px;
+  padding: 9px 4px 9px 40px;
+  background: transparent url("../../../../../assets/images/Vector.svg") no-repeat
+    13px center;
+  background-color: colors.$cool-gray-secondary;
+  margin: 20px;
+  @include text-format($fontSize: 16px, $fontWeight: 400, $textAlign: left);
+  color: colors.$secondary-light;
+}
+.search-input:focus {
+  outline: none;
+  border: 1px solid colors.$accent-light;
+}
+.search-button {
+  @include flex-center();
+}
+.btn-search {
+  padding: 12px 41px;
+  background: colors.$accent-dark;
+  border: none;
+  border-radius: 6px;
+  color: colors.$base-light-max;
+  cursor: pointer;
+}
+.title {
+  @include page-title();
+  margin: 98px 0 0 0;
+}
+
